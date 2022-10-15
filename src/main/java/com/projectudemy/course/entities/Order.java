@@ -4,9 +4,7 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
+import com.projectudemy.course.entities.enums.OrderStatus;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,29 +16,32 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_order")
-public class Order implements Serializable{
+public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	// @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant momentOrder;
-	
+	private Integer orderStatus;
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 	
+
 	public Order() {
 	}
 
-	public Order(Long id, Instant momentOrder, User user) {
+	public Order(Long id, Instant momentOrder, OrderStatus orderStatus, User user) {
 		super();
 		this.id = id;
 		this.momentOrder = momentOrder;
+		setOrderStatus(orderStatus);
 		this.user = user;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -56,6 +57,16 @@ public class Order implements Serializable{
 
 	public void setMomentOrder(Instant momentOrder) {
 		this.momentOrder = momentOrder;
+	}
+	
+
+	public OrderStatus getOrderStatus() {
+		return OrderStatus.valueOf(orderStatus);
+	}
+
+	public void setOrderStatus(OrderStatus orderStatus) {
+		if (orderStatus != null)
+		this.orderStatus = orderStatus.getCode();
 	}
 
 	public User getUser() {
@@ -82,10 +93,5 @@ public class Order implements Serializable{
 		Order other = (Order) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-	
-	
-	
-	
+
 }
