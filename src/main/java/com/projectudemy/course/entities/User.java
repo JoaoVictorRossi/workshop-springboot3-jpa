@@ -8,6 +8,7 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,7 +28,7 @@ import jakarta.persistence.Table;
 		private String name;
 		private String email;
 		private String phone;
-		private String passoword;
+		private String password;
 		
 		@JsonIgnore
 		@OneToMany(mappedBy = "user")
@@ -37,13 +38,13 @@ import jakarta.persistence.Table;
 		}
 
 
-		public User(Long id, String name, String email, String phone, String passoword) {
+		public User(Long id, String name, String email, String phone, String password) {
 			super();
 			this.id = id;
 			this.name = name;
 			this.email = email;
 			this.phone = phone;
-			this.passoword = passoword;
+			this.password = password;
 		}
 
 		public Long getId() {
@@ -78,12 +79,12 @@ import jakarta.persistence.Table;
 			this.phone = phone;
 		}
 
-		public String getPassoword() {
-			return passoword;
+		public String getpassword() {
+			return password;
 		}
 
-		public void setPassoword(String passoword) {
-			this.passoword = passoword;
+		public void setpassword(String password) {
+			this.password = password;
 		}
 
 		public List<Order> getOrders() {
