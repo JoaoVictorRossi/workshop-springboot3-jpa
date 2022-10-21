@@ -7,7 +7,7 @@ O projeto foi construído após a realização do curso de Java do professor Né
 O projeto consiste no cadastro de usuários em website de loja virtual de várias categorias (CRUD - INSERT, READ, UPDATE e DELETE), a aplicação também permite a pesquisa de pedidos, categorias, e produtos de cada usuário. 
 
 ## Modelo conceitual (UML)
-_O UML a seguir for proporcionado pelo professor Nélio Alves_
+_O UML a seguir foi proporcionado pelo professor Nélio Alves_
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/86536889/197230807-95b95f07-d7c8-4303-b403-2d018ba6f837.png"/>
